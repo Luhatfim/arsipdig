@@ -1,4 +1,24 @@
-<?php include 'header.php'; ?>
+<?php
+include 'header.php';
+
+
+$arsip = mysqli_query($koneksi, "SELECT * FROM arsip,kategori,petugas WHERE arsip_petugas=petugas_id and arsip_kategori=kategori_id ORDER BY arsip_id DESC");
+$title = "Laporan Data Arsip per Tanggal " . date('d/m/Y');
+if (isset($_POST['view_data'])) {
+    if ($_POST['laporan'] == 'harian') {
+        $tggl = $_POST['tanggal'];
+        $arsip = mysqli_query($koneksi, "SELECT * FROM arsip,kategori,petugas WHERE arsip_petugas=petugas_id and (arsip_kategori=kategori_id AND arsip_waktu_upload BETWEEN '$tggl 00:00:00' AND '$tggl 23:59:59') ORDER BY arsip_id DESC");
+
+        $title = "Laporan Data Transaksi per Tanggal " . date('d/m/Y', strtotime($_POST['tanggal']));
+        $_POST['bulan'] = date('Y-m');
+    } else if ($_POST['laporan'] == 'bulanan') {
+        $bln = $_POST['bulan'];
+        $arsip = mysqli_query($koneksi, "SELECT * FROM arsip,kategori,petugas WHERE arsip_petugas=petugas_id and (arsip_kategori=kategori_id AND arsip_waktu_upload BETWEEN '$bln-01 00:00:00' AND '$bln-31 23:59:59') ORDER BY arsip_id DESC");
+        $title = "Laporan Data Transaksi per Bulan " . date('m/Y', strtotime($_POST['bulan']));
+        $_POST['tanggal'] = date('Y-m-d');
+    }
+}
+?>
 
 <div class="breadcome-area">
     <div class="container-fluid">
@@ -60,7 +80,13 @@
                 </div>
             </form>
 
-            <table id="table" class="table table-bordered table-striped table-hover table-datatable">
+            <div class="pl-3 mb-2 text-center">
+                <hr>
+                <h4><?= $title ?></b></h2>
+                    <hr>
+            </div>
+
+            <table id="myTable" class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr>
                         <th width="1%">No</th>
@@ -75,7 +101,6 @@
                     <?php
                     include '../koneksi.php';
                     $no = 1;
-                    $arsip = mysqli_query($koneksi, "SELECT * FROM arsip,kategori,petugas WHERE arsip_petugas=petugas_id and arsip_kategori=kategori_id ORDER BY arsip_id DESC");
                     while ($p = mysqli_fetch_array($arsip)) {
                     ?>
                         <tr>
@@ -108,8 +133,22 @@
 
 <?php include 'footer.php'; ?>
 
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.13.1/b-2.3.3/b-colvis-2.3.3/b-html5-2.3.3/b-print-2.3.3/datatables.min.css" />
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.13.1/b-2.3.3/b-colvis-2.3.3/b-html5-2.3.3/b-print-2.3.3/datatables.min.js"></script>
 <script>
     $(document).ready(function($) {
+        $('#myTable').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'print', 'excel', 'pdf', 'copy'
+            ]
+        });
+
+        $('title').html('<?= $title ?>');
+
         $('.dt-buttons').find('.btn-default').removeClass('.btn-default').addClass('btn-primary');
         $('.dt-buttons').css('margin-bottom', '10px');
         $('.dataTables_length').css('margin-bottom', '-45px');
@@ -122,6 +161,9 @@
             } else if (lap == 'bulanan') {
                 $('#tanggal').attr('hidden', '');
                 $('#bulan').removeAttr('hidden');
+            } else {
+                $('#tanggal').attr('hidden', '');
+                $('#bulan').attr('hidden', '');
             }
         });
 
@@ -136,6 +178,9 @@
         <?php } else if (isset($_POST['laporan']) && $_POST['laporan'] == 'bulanan') { ?>
             $('#tanggal').attr('hidden', '');
             $('#bulan').removeAttr('hidden');
+        <?php } else { ?>
+            $('#tanggal').attr('hidden', '');
+            $('#bulan').attr('hidden', '');
         <?php } ?>
     });
 </script>
