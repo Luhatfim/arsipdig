@@ -62,7 +62,7 @@ if (isset($_POST['view_data'])) {
                         <select class="form-control" required="" name="laporan" style="font-size: 12px;" id="laporan">
                             <option value="harian">Harian</option>
                             <option value="bulanan">Bulanan</option>
-                            <option value="all">Semua</option>
+                            <option value="all" selected>Semua</option>
                         </select>
                     </div>
                     <div hidden="" class="col-md-2 form-group" id="bulan">
@@ -167,7 +167,7 @@ if (isset($_POST['view_data'])) {
             }
         });
 
-        $('#laporan').val("<?= $_POST ? $_POST['laporan'] : 'harian' ?>");
+        $('#laporan').val("<?= $_POST ? $_POST['laporan'] : 'all' ?>");
         $('#bulan').val("<?= $_POST ? $_POST['bulan'] : date('Y-m') ?>");
         $('#bulan-val').val("<?= $_POST ? $_POST['bulan'] : date('Y-m') ?>");
         $('#tanggal-val').val("<?= $_POST ? $_POST['tanggal'] : date('Y-m-d') ?>");
