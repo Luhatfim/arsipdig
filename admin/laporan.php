@@ -9,12 +9,12 @@ if (isset($_POST['view_data'])) {
         $tggl = $_POST['tanggal'];
         $arsip = mysqli_query($koneksi, "SELECT * FROM arsip,kategori,petugas WHERE arsip_petugas=petugas_id and (arsip_kategori=kategori_id AND arsip_waktu_upload BETWEEN '$tggl 00:00:00' AND '$tggl 23:59:59') ORDER BY arsip_id DESC");
 
-        $title = "Laporan Data Transaksi per Tanggal " . date('d/m/Y', strtotime($_POST['tanggal']));
+        $title = "Laporan Data Arsip per Tanggal " . date('d/m/Y', strtotime($_POST['tanggal']));
         $_POST['bulan'] = date('Y-m');
     } else if ($_POST['laporan'] == 'bulanan') {
         $bln = $_POST['bulan'];
         $arsip = mysqli_query($koneksi, "SELECT * FROM arsip,kategori,petugas WHERE arsip_petugas=petugas_id and (arsip_kategori=kategori_id AND arsip_waktu_upload BETWEEN '$bln-01 00:00:00' AND '$bln-31 23:59:59') ORDER BY arsip_id DESC");
-        $title = "Laporan Data Transaksi per Bulan " . date('m/Y', strtotime($_POST['bulan']));
+        $title = "Laporan Data Arsip per Bulan " . date('m/Y', strtotime($_POST['bulan']));
         $_POST['tanggal'] = date('Y-m-d');
     }
 }
