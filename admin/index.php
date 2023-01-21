@@ -35,10 +35,10 @@
                             <div id="sparklinedash"></div>
                         </li>
                         <li class="text-right sp-cn-r">
-                            <i class="fa fa-level-up" aria-hidden="true"></i> 
+                            <i class="fa fa-level-up" aria-hidden="true"></i>
                             <span class="counter text-success">
-                                <?php 
-                                $jumlah_petugas = mysqli_query($koneksi,"select * from petugas");
+                                <?php
+                                $jumlah_petugas = mysqli_query($koneksi, "select * from petugas");
                                 ?>
                                 <span class="counter"><?php echo mysqli_num_rows($jumlah_petugas); ?></span>
                             </span>
@@ -54,10 +54,10 @@
                             <div id="sparklinedash2"></div>
                         </li>
                         <li class="text-right graph-two-ctn">
-                            <i class="fa fa-level-up" aria-hidden="true"></i> 
+                            <i class="fa fa-level-up" aria-hidden="true"></i>
                             <span class="counter text-purple">
-                                <?php 
-                                $jumlah_user = mysqli_query($koneksi,"select * from user");
+                                <?php
+                                $jumlah_user = mysqli_query($koneksi, "select * from user");
                                 ?>
                                 <span class="counter"><?php echo mysqli_num_rows($jumlah_user); ?></span>
                             </span>
@@ -73,10 +73,10 @@
                             <div id="sparklinedash3"></div>
                         </li>
                         <li class="text-right graph-three-ctn">
-                            <i class="fa fa-level-up" aria-hidden="true"></i> 
+                            <i class="fa fa-level-up" aria-hidden="true"></i>
                             <span class="counter text-info">
-                                <?php 
-                                $jumlah_arsip = mysqli_query($koneksi,"select * from arsip");
+                                <?php
+                                $jumlah_arsip = mysqli_query($koneksi, "select * from arsip");
                                 ?>
                                 <span class="counter"><?php echo mysqli_num_rows($jumlah_arsip); ?></span>
                             </span>
@@ -92,10 +92,10 @@
                             <div id="sparklinedash4"></div>
                         </li>
                         <li class="text-right graph-four-ctn">
-                            <i class="fa fa-level-down" aria-hidden="true"></i> 
+                            <i class="fa fa-level-down" aria-hidden="true"></i>
                             <span class="text-danger">
-                                <?php 
-                                $jumlah_kategori = mysqli_query($koneksi,"select * from kategori");
+                                <?php
+                                $jumlah_kategori = mysqli_query($koneksi, "select * from kategori");
                                 ?>
                                 <span class="counter"><?php echo mysqli_num_rows($jumlah_kategori); ?></span>
                             </span>
@@ -142,9 +142,9 @@
 
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 
-                <?php 
+                <?php
                 $id = $_SESSION['id'];
-                $saya = mysqli_query($koneksi,"select * from admin where admin_id='$id'");
+                $saya = mysqli_query($koneksi, "select * from admin where admin_id='$id'");
                 $s = mysqli_fetch_assoc($saya);
                 ?>
                 <div class="single-cards-item">
@@ -156,15 +156,15 @@
                     </div>
 
                     <div class="single-product-text">
-                        <?php 
-                        if($s['admin_foto'] == ""){
-                            ?>
+                        <?php
+                        if ($s['admin_foto'] == "") {
+                        ?>
                             <img class="img-user" src="../gambar/sistem/user.png">
-                            <?php
-                        }else{
-                            ?>
+                        <?php
+                        } else {
+                        ?>
                             <img class="img-user" src="../gambar/admin/<?php echo $s['admin_foto']; ?>">
-                            <?php
+                        <?php
                         }
                         ?>
 
@@ -181,3 +181,49 @@
 
 
 <?php include 'footer.php'; ?>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        Morris.Area({
+            element: 'extra-area-chart',
+            data: [
+
+                <?php
+                $dateBegin = strtotime("first day of this month");
+                $dateEnd = strtotime("last day of this month");
+
+                $awal = date("Y/m/d", $dateBegin);
+                $akhir = date("Y/m/d", $dateEnd);
+
+                $arsip = mysqli_query($koneksi, "SELECT * FROM riwayat WHERE date(riwayat_waktu) >= '$awal' AND date(riwayat_waktu) <= '$akhir'");
+                while ($p = mysqli_fetch_array($arsip)) {
+                    $tgl = date('Y/m/d', strtotime($p['riwayat_waktu']));
+                    $jumlah = mysqli_query($koneksi, "select * from riwayat where date(riwayat_waktu)='$tgl'");
+                    $j = mysqli_num_rows($jumlah);
+                ?> {
+                        period: '<?php echo date('Y-m-d', strtotime($p['riwayat_waktu'])) ?>',
+                        Unduh: <?php echo $j ?>,
+                    },
+                <?php
+                }
+                ?>
+
+            ],
+            xkey: 'period',
+            ykeys: ['Unduh'],
+            labels: ['Unduh'],
+            xLabels: 'day',
+            xLabelAngle: 45,
+            pointSize: 3,
+            fillOpacity: 0,
+            pointStrokeColors: ['#006DF0'],
+            behaveLikeLine: true,
+            gridLineColor: '#e0e0e0',
+            lineWidth: 1,
+            hideHover: 'auto',
+            lineColors: ['#006DF0'],
+            resize: true
+
+        });
+    });
+</script>

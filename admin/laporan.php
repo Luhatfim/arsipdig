@@ -32,29 +32,30 @@
         </div>
         <div class="panel-body">
 
-            <form method="GET" action="">
+            <form method="POST">
                 <div class="row pl-3">
                     <div class="col-md-2 border-right pt-4">
                         <span><b>Data Berdasarkan:</b></span>
                     </div>
                     <div class="col-md-2 form-group">
                         <label>Laporan</label>
-                        <select class="form-control input-sm" required="" name="laporan" style="font-size: 12px;" id="laporan-change">
-                            <option value="bulanan">Bulanan</option>
+                        <select class="form-control" required="" name="laporan" style="font-size: 12px;" id="laporan">
                             <option value="harian">Harian</option>
+                            <option value="bulanan">Bulanan</option>
+                            <option value="all">Semua</option>
                         </select>
                     </div>
-                    <div class="col-md-3 form-group" id="bulan">
+                    <div hidden="" class="col-md-2 form-group" id="bulan">
                         <label>Bulan</label>
-                        <input type="month" class="form-control input-sm" id="bulan-val" name="bulan" style="font-size: 12px;" value="2023-01" autocomplete="off">
+                        <input type="month" class="form-control" id="bulan-val" name="bulan" style="font-size: 12px;" value="2023-01" autocomplete="off">
                     </div>
-                    <div class="col-md-3 form-group" id="tanggal" hidden="">
+                    <div class="col-md-2 form-group" id="tanggal">
                         <label>Tanggal</label>
-                        <input type="date" class="form-control input-sm" id="tanggal-val" name="tanggal" style="font-size: 12px;" value="2023-01-15" autocomplete="off">
+                        <input type="date" class="form-control" id="tanggal-val" name="tanggal" style="font-size: 12px;" value="2023-01-21" autocomplete="off">
                     </div>
                     <div class="col-md-2 form-group">
                         <label>&nbsp;</label>
-                        <button type="submit" class="btn btn-primary btn-sm btn-block" style="font-size: 14px;"><i class="fa fa-eye"></i> &nbsp;Tampilkan Data</button>
+                        <button type="submit" name="view_data" class="btn btn-primary btn-sm btn-block" style="font-size: 12px;"><i class="fa fa-eye"></i> &nbsp;Tampilkan Data</button>
                     </div>
                 </div>
             </form>
@@ -90,7 +91,7 @@
                             <td><?php echo $p['kategori_nama'] ?></td>
                             <td><?php echo $p['petugas_nama'] ?></td>
                             <td><?php echo $p['arsip_keterangan'] ?></td>
-                            
+
                         </tr>
                     <?php
                     }
@@ -106,3 +107,35 @@
 
 
 <?php include 'footer.php'; ?>
+
+<script>
+    $(document).ready(function($) {
+        $('.dt-buttons').find('.btn-default').removeClass('.btn-default').addClass('btn-primary');
+        $('.dt-buttons').css('margin-bottom', '10px');
+        $('.dataTables_length').css('margin-bottom', '-45px');
+
+        $('#laporan').change(function() {
+            var lap = $(this).val();
+            if (lap == 'harian') {
+                $('#bulan').attr('hidden', '');
+                $('#tanggal').removeAttr('hidden');
+            } else if (lap == 'bulanan') {
+                $('#tanggal').attr('hidden', '');
+                $('#bulan').removeAttr('hidden');
+            }
+        });
+
+        $('#laporan').val("<?= $_POST ? $_POST['laporan'] : 'harian' ?>");
+        $('#bulan').val("<?= $_POST ? $_POST['bulan'] : date('Y-m') ?>");
+        $('#bulan-val').val("<?= $_POST ? $_POST['bulan'] : date('Y-m') ?>");
+        $('#tanggal-val').val("<?= $_POST ? $_POST['tanggal'] : date('Y-m-d') ?>");
+
+        <?php if (isset($_POST['laporan']) && $_POST['laporan'] == 'harian') { ?>
+            $('#bulan').attr('hidden', '');
+            $('#tanggal').removeAttr('hidden');
+        <?php } else if (isset($_POST['laporan']) && $_POST['laporan'] == 'bulanan') { ?>
+            $('#tanggal').attr('hidden', '');
+            $('#bulan').removeAttr('hidden');
+        <?php } ?>
+    });
+</script>
