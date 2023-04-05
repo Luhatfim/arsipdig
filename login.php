@@ -34,12 +34,11 @@
     <div class="error-pagewrap">
         <div class="error-page-int">
             <div class="text-center m-b-md custom-login">
-                <h3>ARSIP DIGITAL</h3>
-                <h4>Sistem Informasi Arsip Digital</h4>
+                <h2>ARSIP DIGITAL</h2>
+                <h3>Madrasah Ibdtidaiyah Yapit Pencong</h3>
 
                 <br>
 
-                <p>Silahkan login untuk mengakses arsip</p>
 
             </div>
             <div class="content-error">
@@ -60,7 +59,7 @@
                     <div class="panel-body">
 
                         <center>
-                            <h4>LOGIN</h4>
+                            <h3>LOGIN</h3>
                             <img class="main-logo" src="assets/img/logo/madrasah1.png" alt="" />
                         </center>
                         <br>

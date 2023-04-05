@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/educate-custon-icon.css">
     <link rel="stylesheet" href="../assets/css/font-awesome-all.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/53156447e1.css" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/morrisjs/morris.css">
     <link rel="stylesheet" href="../assets/css/scrollbar/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="../assets/css/metisMenu/metisMenu.min.css">
@@ -33,6 +33,7 @@
 
     <link rel="stylesheet" type="text/css" href="../assets/js/DataTables/datatables.css">
 
+    <script src="https://kit.fontawesome.com/53156447e1.js" crossorigin="anonymous"></script>
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
 
     <?php
@@ -58,41 +59,65 @@
                     <ul class="metismenu" id="menu1">
                         <li class="active">
                             <a href="index.php">
-                                <span class="fa fa-home icon-wrap"></span>
-                                <span class="mini-click-non">Dashboard</span>
+                                <span class="fas fa-home icon-wrap"></span>
+                                <span class="mini-click-non" style="padding-left: 6px;">Dashboard</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="kategori.php" aria-expanded="false"><span class="fa fa-list-alt icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Data Kategori</span></a>
+                            <a href="kategori.php" aria-expanded="false">
+                                <span class="fas fa-list-alt icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                                <span class="mini-click-non" style="padding-left: 6px;">Data Kategori</span>
+                            </a>
                         </li>
 
                         <li>
-                            <a href="arsip.php" aria-expanded="false"><span class="fa fa-archive icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Data Arsip</span></a>
+                            <a href="arsip.php" aria-expanded="false">
+                                <span class="fas fa-archive icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                                <span class="mini-click-non" style="padding-left: 6px;">Data Arsip</span>
+                            </a>
                         </li>
 
                         <li>
-                            <a href="petugas.php" aria-expanded="false"><span class="fa fa-user icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Data Petugas</span></a>
+                            <a href="petugas.php" aria-expanded="false">
+                                <span class="fas fa-user icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                                <span class="mini-click-non" style="padding-left: 8px;">Data Petugas</span>
+                            </a>
                         </li>
 
                         <li>
-                            <a href="user.php" aria-expanded="false"><span class="fa fa-user icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Data User</span></a>
+                            <a href="user.php" aria-expanded="false">
+                                <span class="fas fa-user icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                                <span class="mini-click-non" style="padding-left: 7px;">Data User</span>
+                            </a>
                         </li>
 
                         <li>
-                            <a href="laporan.php" aria-expanded="false"><span class="fa fa-file icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Laporan</span></a>
+                            <a href="laporan.php" aria-expanded="false">
+                                <span class="fas fa-file-alt icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                                <span class="mini-click-non" style="padding-left: 8px;">Laporan</span>
+                            </a>
                         </li>
 
                         <li>
-                            <a href="riwayat.php" aria-expanded="false"><span class="fa fa-download icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Riwayat Unduh</span></a>
+                            <a href="riwayat.php" aria-expanded="false">
+                                <span class="fas fa-file-download icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                                <span class="mini-click-non" style="padding-left: 8px;">Riwayat Unduh</span>
+                            </a>
                         </li>
 
                         <li>
-                            <a href="gantipassword.php" aria-expanded="false"><span class="fa fa-unlock-alt icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Ganti Password</span></a>
+                            <a href="gantipassword.php" aria-expanded="false">
+                                <span class="fas fa-user-cog icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                                <span class="mini-click-non">Ganti Password</span>
+                            </a>
                         </li>
 
                         <li>
-                            <a href="logout.php" aria-expanded="false"><span class="fa fa-sign-out icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Logout</span></a>
+                            <a href="logout.php" aria-expanded="false">
+                                <span class="fa fa-sign-out-alt icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                                <span class="mini-click-non" style="padding-left: 8px;">Logout</span>
+                            </a>
                         </li>
 
                     </ul>
@@ -210,42 +235,67 @@
                                     <ul class="mobile-menu-nav">
                                         <li class="active">
                                             <a href="index.php">
-                                                <span class="fa fa-home icon-wrap"></span>
+                                                <span class="fas fa-home icon-wrap"></span>
                                                 <span class="mini-click-non">Dashboard</span>
                                             </a>
                                         </li>
 
                                         <li>
-                                            <a href="kategori.php" aria-expanded="false"><span class="fa fa-list-alt icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Data Kategori</span></a>
+                                            <a href="kategori.php" aria-expanded="false">
+                                                <span class="fas fa-list-alt icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                                                <span class="mini-click-non">Data Kategori</span>
+                                            </a>
                                         </li>
 
                                         <li>
-                                            <a href="arsip.php" aria-expanded="false"><span class="fa fa-archive icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Data Arsip</span></a>
+                                            <a href="arsip.php" aria-expanded="false">
+                                                <span class="fas fa-archive icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                                                <span class="mini-click-non">Data Arsip</span>
+                                            </a>
                                         </li>
 
                                         <li>
-                                            <a href="petugas.php" aria-expanded="false"><span class="fa fa-user icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Data Petugas</span></a>
+                                            <a href="petugas.php" aria-expanded="false">
+                                                <span class="fas fa-user icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                                                <span class="mini-click-non">Data Petugas</span>
+                                            </a>
                                         </li>
 
                                         <li>
-                                            <a href="user.php" aria-expanded="false"><span class="fa fa-user icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Data User</span></a>
+                                            <a href="user.php" aria-expanded="false">
+                                                <span class="fas fa-user icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                                                <span class="mini-click-non">Data User</span>
+                                            </a>
                                         </li>
 
                                         <li>
-                                            <a href="laporan.php" aria-expanded="false"><span class="fa fa-file icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Laporan</span></a>
+                                            <a href="laporan.php" aria-expanded="false">
+                                                <span class="fas fa-file-alt icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                                                <span class="mini-click-non">Laporan</span>
+                                            </a>
                                         </li>
 
                                         <li>
-                                            <a href="riwayat.php" aria-expanded="false"><span class="fa fa-download icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Riwayat Unduh</span></a>
+                                            <a href="riwayat.php" aria-expanded="false">
+                                                <span class="fas fa-file-download icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                                                <span class="mini-click-non">Riwayat Unduh</span>
+                                            </a>
                                         </li>
 
                                         <li>
-                                            <a href="gantipassword.php" aria-expanded="false"><span class="fa fa-unlock-alt icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Ganti Password</span></a>
+                                            <a href="gantipassword.php" aria-expanded="false">
+                                                <span class="fas fa-user-cog icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                                                <span class="mini-click-non">Ganti Password</span>
+                                            </a>
                                         </li>
 
                                         <li>
-                                            <a href="logout.php" aria-expanded="false"><span class="fa fa-sign-out icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Logout</span></a>
+                                            <a href="logout.php" aria-expanded="false">
+                                                <span class="fa fa-sign-out-alt icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                                                <span class="mini-click-non">Logout</span>
+                                            </a>
                                         </li>
+
                                     </ul>
                                 </nav>
                             </div>

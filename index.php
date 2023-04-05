@@ -9,14 +9,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     </head>
 
     <body>
 
         <style type="text/css">
-
-            .navbar-siad{
+            .navbar-siad {
                 background: #196840;
                 border-radius: 0px;
                 border: 1px solid #196840;
@@ -30,43 +30,44 @@
 
             }
 
-            .navbar-inverse .navbar-nav > li > a {
+            .navbar-inverse .navbar-nav>li>a {
 
                 color: #fff;
 
             }
-            .navbar-siad > li > a {
+
+            .navbar-siad>li>a {
 
                 color: #9d9d9d !important;
 
             }
 
-            .banner{
+            .banner {
                 background: #196840;
                 border-radius: 0px;
                 border: 1px solid #196840;
                 padding: 60px 0px;
             }
 
-            .banner{
+            .banner {
                 color: white;
             }
 
-            .banner a{
+            .banner a {
                 padding: 15px 25px;
                 color: white;
                 border: 1px solid white;
-                -webkit-transition: all 0.5s; 
+                -webkit-transition: all 0.5s;
                 transition: all 0.5s;
                 margin-right: 10px;
             }
 
-            .banner a:hover{
+            .banner a:hover {
                 text-decoration: none;
                 border: 1px dashed white;
             }
 
-            .banner p{
+            .banner p {
                 font-size: 13pt;
             }
         </style>
@@ -76,7 +77,7 @@
         <nav class="navbar navbar-inverse navbar-siad">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
-              <!-- <div class="navbar-header">
+                <!-- <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
@@ -105,7 +106,7 @@
                         </li>
                     </ul> -->
 
-                   
+
                 </div>
             </div>
         </nav>
@@ -117,19 +118,19 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div style="margin-top: 100px;">
-                            <h1>Sistem Informasi Arsip Digital</h1>
-                            <p>Manajemen file arsip dengan mudah dan cepat.</p>
-
+                            <h1 style="color">Sistem Informasi Arsip Digital</h1>
+                            <p>Selamat Datang di Sistem Informasi Arsip Digital Madrasah Ibdtidaiyah Yapit Pencong</p>
                             <br>
-                            <br>
+                            
+                            <p>Silahkan Login Untuk Mengakses Arsip</p>
 
-                            <a href="login.php">LOGIN</a>
+                            <a href="login.php" class="btn btn-primary" aria-expanded="false"><span class="fa fa-sign-in icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">LOGIN</span></a>
                         </div>
                     </div>
                     <div class="col-lg-6">
 
                         <img src="gambar/depan/10.png">
-                        
+
                     </div>
                 </div>
 

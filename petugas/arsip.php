@@ -46,7 +46,7 @@
                 if(isset($_GET['alert'])){
                     if($_GET['alert'] == "gagal"){
                         ?>
-                        <div class="alert alert-danger">File arsip gagal diupload. krena demi keamanan file .php tidak diperbolehkan.</div>
+                        <div class="alert alert-danger">File arsip gagal diupload. karena demi keamanan file .php tidak diperbolehkan.</div>
                         <?php
                     }else{
                         ?>
@@ -63,7 +63,7 @@
                         <th>Waktu Upload</th>
                         <th>Arsip</th>
                         <th>Kategori</th>
-                        <th>Petugas</th>
+                        <th>Diunggah</th>
                         <th>Keterangan</th>
                         <th class="text-center" width="21%">OPSI</th>
                     </tr>
@@ -78,11 +78,12 @@
                         ?>
                         <tr>
                             <td><?php echo $no++; ?></td>
-                            <td><?php echo date('H:i:s  d-m-Y',strtotime($p['arsip_waktu_upload'])) ?></td>
+                            <td><?php echo date('d-m-Y',strtotime($p['arsip_waktu_upload'])) ?></td>
                             <td>
 
                                 <b>KODE</b> : <?php echo $p['arsip_kode'] ?><br>
                                 <b>Nama</b> : <?php echo $p['arsip_nama'] ?><br>
+                                <b>Nomor Surat</b> : <?php echo $p['arsip_nomor_surat'] ?><br>
                                 <b>Jenis</b> : <?php echo $p['arsip_jenis'] ?><br>
 
                             </td>

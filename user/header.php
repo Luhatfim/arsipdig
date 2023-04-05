@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Petugas - Sistem Informasi Arsip Digital</title>
+    <title>User - Sistem Informasi Arsip Digital</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
@@ -32,6 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../assets/js/DataTables/datatables.css">
 
+    <script src="https://kit.fontawesome.com/53156447e1.js" crossorigin="anonymous"></script>
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
 
     <?php
@@ -63,15 +64,24 @@
                         </li>
 
                         <li>
-                            <a href="arsip.php" aria-expanded="false"><span class="fa fa-archive icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Data Arsip</span></a>
+                            <a href="arsip.php" aria-expanded="false">
+                                <span class="fas fa-archive icon-wrap sub-icon-mg" aria-hidden="true"></span> 
+                                <span class="mini-click-non" style="padding-left: 4px;">Data Arsip</span>
+                            </a>
                         </li>
 
                         <li>
-                            <a href="gantipassword.php" aria-expanded="false"><span class="fa fa-unlock-alt icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Ganti Password</span></a>
+                            <a href="gantipassword.php" aria-expanded="false">
+                                <span class="fas fa-user-cog icon-wrap sub-icon-mg" aria-hidden="true"></span> 
+                                <span class="mini-click-non">Ganti Password</span>
+                            </a>
                         </li>
 
                         <li>
-                            <a href="logout.php" aria-expanded="false"><span class="fa fa-sign-out icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Logout</span></a>
+                            <a href="logout.php" aria-expanded="false">
+                                <span class="fas fa-sign-out-alt icon-wrap sub-icon-mg" aria-hidden="true"></span> 
+                                <span class="mini-click-non" style="padding-left: 8px;">Logout</span>
+                            </a>
                         </li>
 
                     </ul>

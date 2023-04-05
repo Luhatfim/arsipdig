@@ -1,5 +1,9 @@
 <?php include 'header.php'; ?>
 
+<link rel="stylesheet" href="https://kit.fontawesome.com/53156447e1.css" crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/53156447e1.js" crossorigin="anonymous"></script>
+<!--Get your code at fontawesome.com-->
+
 <div class="breadcome-area">
     <div class="container-fluid">
         <div class="row">
@@ -45,20 +49,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php 
+                    <?php
                     include '../koneksi.php';
                     $no = 1;
-                    $arsip = mysqli_query($koneksi,"SELECT * FROM arsip,kategori,petugas WHERE arsip_petugas=petugas_id and arsip_kategori=kategori_id ORDER BY arsip_id DESC");
-                    while($p = mysqli_fetch_array($arsip)){
-                        ?>
+                    $arsip = mysqli_query($koneksi, "SELECT * FROM arsip,kategori,petugas WHERE arsip_petugas=petugas_id and arsip_kategori=kategori_id ORDER BY arsip_id DESC");
+                    while ($p = mysqli_fetch_array($arsip)) {
+                    ?>
                         <tr>
                             <td><?php echo $no++; ?></td>
-                            <td><?php echo date('H:i:s  d-m-Y',strtotime($p['arsip_waktu_upload'])) ?></td>
+                            <td><?php echo date('H:i:s  d-m-Y', strtotime($p['arsip_waktu_upload'])) ?></td>
                             <td>
 
                                 <b>KODE</b> : <?php echo $p['arsip_kode'] ?><br>
                                 <b>Nama</b> : <?php echo $p['arsip_nama'] ?><br>
+                                <b>Nomor Surat</b> : <?php echo $p['arsip_nomor_surat'] ?><br>
                                 <b>Jenis</b> : <?php echo $p['arsip_jenis'] ?><br>
+                                
 
                             </td>
                             <td><?php echo $p['kategori_nama'] ?></td>
@@ -90,7 +96,7 @@
 
 
                                 <div class="btn-group">
-                                    <a target="_blank" class="btn btn-default" href="../arsip/<?php echo $p['arsip_file']; ?>"><i class="fa fa-download"></i></a>
+                                    <a target="_blank" class="btn btn-default" href="../arsip/<?php echo $p['arsip_file']; ?>"><i class="fas fa-download"></i></a>
                                     <a target="_blank" href="arsip_preview.php?id=<?php echo $p['arsip_id']; ?>" class="btn btn-default"><i class="fa fa-search"></i> Preview</a>
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal_<?php echo $p['arsip_id']; ?>">
                                         <i class="fa fa-trash"></i>
@@ -98,7 +104,7 @@
                                 </div>
                             </td>
                         </tr>
-                        <?php 
+                    <?php
                     }
                     ?>
                 </tbody>
