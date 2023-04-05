@@ -36,7 +36,7 @@
                 </div>
                 <div class="panel-body">
 
-                    <div class="pull-right">            
+                    <div class="pull-right">
                         <a href="arsip.php" class="btn btn-sm btn-primary"><i class="fa fa-arrow-left"></i> Kembali</a>
                     </div>
 
@@ -44,17 +44,17 @@
                     <br>
 
 
-                    <?php 
-                    $id = $_GET['id'];              
+                    <?php
+                    $id = $_GET['id'];
                     $data = mysqli_query($koneksi, "select * from arsip where arsip_id='$id'");
-                    while($d = mysqli_fetch_array($data)){
-                        ?>
+                    while ($d = mysqli_fetch_array($data)) {
+                    ?>
 
                         <form method="post" action="arsip_update.php" enctype="multipart/form-data">
 
                             <div class="form-group">
                                 <label>Kode Arsip</label>
-                                  <input type="hidden" name="id" value="<?php echo $d['arsip_id']; ?>">
+                                <input type="hidden" name="id" value="<?php echo $d['arsip_id']; ?>">
                                 <input type="text" class="form-control" name="kode" required="required" value="<?php echo $d['arsip_kode']; ?>">
                             </div>
 
@@ -64,15 +64,22 @@
                             </div>
 
                             <div class="form-group">
+                                <label>Nomor Surat</label>
+                                <input type="text" class="form-control" name="nomor" required="required" value="<?php echo $d['arsip_nomor_surat']; ?>">
+                            </div>
+
+                            <div class="form-group">
                                 <label>Kategori</label>
                                 <select class="form-control" name="kategori" required="required">
                                     <option value="">Pilih kategori</option>
-                                    <?php 
-                                    $kategori = mysqli_query($koneksi,"SELECT * FROM kategori");
-                                    while($k = mysqli_fetch_array($kategori)){
-                                        ?>
-                                        <option <?php if($k['kategori_id'] == $d['arsip_kategori']){echo "selected='selected'";} ?> value="<?php echo $k['kategori_id']; ?>"><?php echo $k['kategori_nama']; ?></option>
-                                        <?php 
+                                    <?php
+                                    $kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
+                                    while ($k = mysqli_fetch_array($kategori)) {
+                                    ?>
+                                        <option <?php if ($k['kategori_id'] == $d['arsip_kategori']) {
+                                                    echo "selected='selected'";
+                                                } ?> value="<?php echo $k['kategori_id']; ?>"><?php echo $k['kategori_nama']; ?></option>
+                                    <?php
                                     }
                                     ?>
                                 </select>
@@ -81,6 +88,29 @@
                             <div class="form-group">
                                 <label>Keterangan</label>
                                 <textarea class="form-control" name="keterangan" required="required"><?php echo $d['arsip_keterangan']; ?></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Hak Akses</label>
+                                <select class="form-control select2" required="required" name="hak_akses[]" multiple="multiple">
+                                    <option value="all">Pilih Semua</option>
+                                    <optgroup label="Petugas">
+                                        <?php
+                                        $petugas = mysqli_query($koneksi, "SELECT * FROM petugas");
+                                        foreach ($petugas as $dta) {
+                                        ?>
+                                            <option value="1-<?= $dta['petugas_id'] ?>"><?= $dta['petugas_nama'] ?></option>
+                                        <?php } ?>
+                                    </optgroup>
+                                    <optgroup label="Guru/Staf">
+                                        <?php
+                                        $user = mysqli_query($koneksi, "SELECT * FROM user WHERE user_id != $id_user");
+                                        foreach ($user as $dta) {
+                                        ?>
+                                            <option value="2-<?= $dta['user_id'] ?>"><?= $dta['user_nama'] ?></option>
+                                        <?php } ?>
+                                    </optgroup>
+                                </select>
                             </div>
 
                             <div class="form-group">
@@ -96,7 +126,7 @@
 
                         </form>
 
-                        <?php 
+                    <?php
                     }
                     ?>
 
@@ -110,3 +140,49 @@
 
 
 <?php include 'footer.php'; ?>
+
+<script>
+    $(document).ready(function() {
+        $('.select2').select2({
+            placeholder: "Pilih hak akses"
+        });
+
+        $('.select2').on('change', function() {
+            var value = $(this).val();
+
+            if (value != null && value.includes('all')) {
+                $('.select2').select2({
+                    placeholder: "Pilih hak akses",
+                    maximumSelectionLength: 1
+                });
+            } else {
+                $('.select2').find('option[value="all"]').remove();
+                $('.select2').select2({
+                    placeholder: "Pilih hak akses"
+                });
+            }
+
+            if (value == null) {
+                $('.select2').prepend('<option value="all" hidden>Pilih Semua</option>');
+            }
+        });
+
+        var data = [];
+        <?php
+        $akses = mysqli_query($koneksi, "SELECT * FROM akses where arsip_id='$id'");
+        foreach ($akses as $dta) {
+        ?>
+            data.push("<?= $dta['role'] . '-' . $dta['user_id'] ?>");
+            var cek = "<?= $dta['role'] ?>";
+        <?php } ?>
+
+        if (cek <= 0) {
+            $('.select2').select2({
+                maximumSelectionLength: 1,
+            }).val('all').trigger('change');
+        } else {
+            $('.select2').find('option[value="all"]').remove();
+            $('.select2').val(data).trigger('change');
+        }
+    });
+</script>

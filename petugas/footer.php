@@ -45,52 +45,13 @@
 <script src="../assets/js/pdf/jquery.media.js"></script>
 <script src="../assets/js/pdf/pdf-active.js"></script>
 
+<!-- Select 2 -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('.table-datatable').DataTable();
-
-
-		Morris.Area({
-			element: 'extra-area-chart',
-			data: [
-
-				<?php
-				$dateBegin = strtotime("first day of this month");
-				$dateEnd = strtotime("last day of this month");
-
-				$awal = date("Y/m/d", $dateBegin);
-				$akhir = date("Y/m/d", $dateEnd);
-
-				$arsip = mysqli_query($koneksi, "SELECT * FROM riwayat WHERE date(riwayat_waktu) >= '$awal' AND date(riwayat_waktu) <= '$akhir'");
-				while ($p = mysqli_fetch_array($arsip)) {
-					$tgl = date('Y/m/d', strtotime($p['riwayat_waktu']));
-					$jumlah = mysqli_query($koneksi, "select * from riwayat where date(riwayat_waktu)='$tgl'");
-					$j = mysqli_num_rows($jumlah);
-				?> {
-						period: '<?php echo date('Y-m-d', strtotime($p['riwayat_waktu'])) ?>',
-						Unduh: <?php echo $j ?>,
-					},
-				<?php
-				}
-				?>
-
-			],
-			xkey: 'period',
-			ykeys: ['Unduh'],
-			labels: ['Unduh'],
-			xLabels: 'day',
-			xLabelAngle: 45,
-			pointSize: 3,
-			fillOpacity: 0,
-			pointStrokeColors: ['#006DF0'],
-			behaveLikeLine: true,
-			gridLineColor: '#e0e0e0',
-			lineWidth: 1,
-			hideHover: 'auto',
-			lineColors: ['#006DF0'],
-			resize: true
-
-		});
 	});
 </script>
 </body>

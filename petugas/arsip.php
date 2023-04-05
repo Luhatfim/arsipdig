@@ -42,16 +42,16 @@
             <br>
 
             <center>
-                <?php 
-                if(isset($_GET['alert'])){
-                    if($_GET['alert'] == "gagal"){
-                        ?>
+                <?php
+                if (isset($_GET['alert'])) {
+                    if ($_GET['alert'] == "gagal") {
+                ?>
                         <div class="alert alert-danger">File arsip gagal diupload. karena demi keamanan file .php tidak diperbolehkan.</div>
-                        <?php
-                    }else{
-                        ?>
+                    <?php
+                    } else {
+                    ?>
                         <div class="alert alert-success">Arsip berhasil tersimpan.</div>
-                        <?php
+                <?php
                     }
                 }
                 ?>
@@ -69,16 +69,36 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php 
+                    <?php
                     include '../koneksi.php';
                     $no = 1;
                     $saya = $_SESSION['id'];
-                    $arsip = mysqli_query($koneksi,"SELECT * FROM arsip,kategori,petugas WHERE arsip_petugas=petugas_id and arsip_kategori=kategori_id and arsip_petugas='$saya' ORDER BY arsip_id DESC");
-                    while($p = mysqli_fetch_array($arsip)){
-                        ?>
+                    $cek_akses = mysqli_query($koneksi, "SELECT * FROM akses WHERE role=0 or (role=1 and user_id='$saya')");
+                    $cek = [];
+                    foreach ($cek_akses as $dta) {
+                        $cek[] = $dta['arsip_id'];
+                    }
+
+                    $cek_string = implode(',', $cek);
+
+                    $arsip = mysqli_query($koneksi, "SELECT * FROM arsip 
+                    JOIN kategori ON arsip.arsip_kategori=kategori.kategori_id
+                    WHERE (arsip.arsip_petugas='$saya') or arsip.arsip_id IN ($cek_string) ORDER BY arsip.arsip_id DESC");
+                    while ($p = mysqli_fetch_array($arsip)) {
+                        $uid = $p['arsip_petugas'];
+                        $petugas = mysqli_query($koneksi, "SELECT * FROM petugas WHERE petugas_id=$uid");
+                        $pts = mysqli_fetch_assoc($petugas);
+
+                        $user = mysqli_query($koneksi, "SELECT * FROM user WHERE user_id=$uid");
+                        $usr = mysqli_fetch_assoc($user);
+
+                        if ($pts) $petugas_nama = $pts['petugas_nama'];
+                        else if ($usr) $petugas_nama = $usr['user_nama'];
+                        else $petugas_nama = '-';
+                    ?>
                         <tr>
                             <td><?php echo $no++; ?></td>
-                            <td><?php echo date('d-m-Y',strtotime($p['arsip_waktu_upload'])) ?></td>
+                            <td><?php echo date('d-m-Y', strtotime($p['arsip_waktu_upload'])) ?></td>
                             <td>
 
                                 <b>KODE</b> : <?php echo $p['arsip_kode'] ?><br>
@@ -88,7 +108,7 @@
 
                             </td>
                             <td><?php echo $p['kategori_nama'] ?></td>
-                            <td><?php echo $p['petugas_nama'] ?></td>
+                            <td><?php echo $petugas_nama ?></td>
                             <td><?php echo $p['arsip_keterangan'] ?></td>
                             <td class="text-center">
 
@@ -118,14 +138,19 @@
                                 <div class="btn-group">
                                     <a target="_blank" class="btn btn-default" href="../arsip/<?php echo $p['arsip_file']; ?>"><i class="fa fa-download"></i></a>
                                     <a target="_blank" href="arsip_preview.php?id=<?php echo $p['arsip_id']; ?>" class="btn btn-default"><i class="fa fa-search"></i> Preview</a>
-                                    <a href="arsip_edit.php?id=<?php echo $p['arsip_id']; ?>" class="btn btn-default"><i class="fa fa-wrench"></i></a>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal_<?php echo $p['arsip_id']; ?>">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
+                                    <?php if ($p['arsip_petugas'] == $id_petugas) { ?>
+                                        <a href="arsip_edit.php?id=<?php echo $p['arsip_id']; ?>" class="btn btn-default"><i class="fa fa-wrench"></i></a>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal_<?php echo $p['arsip_id']; ?>">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    <?php } else { ?>
+                                        <button type="button" class="btn btn-default disabled"><i class="fa fa-wrench"></i></button>
+                                        <button type="button" class="btn btn-primary disabled"><i class="fa fa-trash"></i></button>
+                                    <?php } ?>
                                 </div>
                             </td>
                         </tr>
-                        <?php 
+                    <?php
                     }
                     ?>
                 </tbody>

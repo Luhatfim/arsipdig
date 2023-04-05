@@ -92,8 +92,8 @@
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 
                 <?php 
-                $id = $_SESSION['id'];
-                $saya = mysqli_query($koneksi,"select * from user where user_id='$id'");
+                $id_user = $_SESSION['id'];
+                $saya = mysqli_query($koneksi,"select * from user where user_id='$id_user'");
                 $s = mysqli_fetch_assoc($saya);
                 ?>
                 <div class="single-cards-item">

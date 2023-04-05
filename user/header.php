@@ -32,6 +32,17 @@
 
     <link rel="stylesheet" type="text/css" href="../assets/js/DataTables/datatables.css">
 
+    <style>
+        .select2-container .select2-selection--single {
+            height: 40px !important;
+        }
+
+        .select2-selection__rendered {
+            line-height: 38px !important;
+            padding-left: 10px !important;
+        }
+    </style>
+
     <script src="https://kit.fontawesome.com/53156447e1.js" crossorigin="anonymous"></script>
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
 
@@ -65,21 +76,21 @@
 
                         <li>
                             <a href="arsip.php" aria-expanded="false">
-                                <span class="fas fa-archive icon-wrap sub-icon-mg" aria-hidden="true"></span> 
+                                <span class="fas fa-archive icon-wrap sub-icon-mg" aria-hidden="true"></span>
                                 <span class="mini-click-non" style="padding-left: 4px;">Data Arsip</span>
                             </a>
                         </li>
 
                         <li>
                             <a href="gantipassword.php" aria-expanded="false">
-                                <span class="fas fa-user-cog icon-wrap sub-icon-mg" aria-hidden="true"></span> 
+                                <span class="fas fa-user-cog icon-wrap sub-icon-mg" aria-hidden="true"></span>
                                 <span class="mini-click-non">Ganti Password</span>
                             </a>
                         </li>
 
                         <li>
                             <a href="logout.php" aria-expanded="false">
-                                <span class="fas fa-sign-out-alt icon-wrap sub-icon-mg" aria-hidden="true"></span> 
+                                <span class="fas fa-sign-out-alt icon-wrap sub-icon-mg" aria-hidden="true"></span>
                                 <span class="mini-click-non" style="padding-left: 8px;">Logout</span>
                             </a>
                         </li>

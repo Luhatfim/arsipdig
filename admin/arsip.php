@@ -52,8 +52,19 @@
                     <?php
                     include '../koneksi.php';
                     $no = 1;
-                    $arsip = mysqli_query($koneksi, "SELECT * FROM arsip,kategori,petugas WHERE arsip_petugas=petugas_id and arsip_kategori=kategori_id ORDER BY arsip_id DESC");
+                    $arsip = mysqli_query($koneksi, "SELECT * FROM arsip INNER JOIN kategori on arsip.arsip_kategori = kategori.kategori_id  
+                    ORDER BY arsip_id DESC");
                     while ($p = mysqli_fetch_array($arsip)) {
+                        $uid = $p['arsip_petugas'];
+                        $petugas = mysqli_query($koneksi, "SELECT * FROM petugas WHERE petugas_id=$uid");
+                        $pts = mysqli_fetch_assoc($petugas);
+
+                        $user = mysqli_query($koneksi, "SELECT * FROM user WHERE user_id=$uid");
+                        $usr = mysqli_fetch_assoc($user);
+
+                        if ($pts) $petugas_nama = $pts['petugas_nama'];
+                        else if ($usr) $petugas_nama = $usr['user_nama'];
+                        else $petugas_nama = '-';
                     ?>
                         <tr>
                             <td><?php echo $no++; ?></td>
@@ -64,11 +75,11 @@
                                 <b>Nama</b> : <?php echo $p['arsip_nama'] ?><br>
                                 <b>Nomor Surat</b> : <?php echo $p['arsip_nomor_surat'] ?><br>
                                 <b>Jenis</b> : <?php echo $p['arsip_jenis'] ?><br>
-                                
+
 
                             </td>
                             <td><?php echo $p['kategori_nama'] ?></td>
-                            <td><?php echo $p['petugas_nama'] ?></td>
+                            <td><?php echo $petugas_nama ?></td>
                             <td><?php echo $p['arsip_keterangan'] ?></td>
                             <td class="text-center">
 

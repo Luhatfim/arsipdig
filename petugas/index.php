@@ -35,10 +35,10 @@
                             <div id="sparklinedash"></div>
                         </li>
                         <li class="text-right sp-cn-r">
-                            <i class="fa fa-level-up" aria-hidden="true"></i> 
+                            <i class="fa fa-level-up" aria-hidden="true"></i>
                             <span class="counter text-success">
-                                <?php 
-                                $jumlah_petugas = mysqli_query($koneksi,"select * from petugas");
+                                <?php
+                                $jumlah_petugas = mysqli_query($koneksi, "select * from petugas");
                                 ?>
                                 <span class="counter"><?php echo mysqli_num_rows($jumlah_petugas); ?></span>
                             </span>
@@ -54,10 +54,10 @@
                             <div id="sparklinedash2"></div>
                         </li>
                         <li class="text-right graph-two-ctn">
-                            <i class="fa fa-level-up" aria-hidden="true"></i> 
+                            <i class="fa fa-level-up" aria-hidden="true"></i>
                             <span class="counter text-purple">
-                                <?php 
-                                $jumlah_user = mysqli_query($koneksi,"select * from user");
+                                <?php
+                                $jumlah_user = mysqli_query($koneksi, "select * from user");
                                 ?>
                                 <span class="counter"><?php echo mysqli_num_rows($jumlah_user); ?></span>
                             </span>
@@ -73,10 +73,10 @@
                             <div id="sparklinedash3"></div>
                         </li>
                         <li class="text-right graph-three-ctn">
-                            <i class="fa fa-level-up" aria-hidden="true"></i> 
+                            <i class="fa fa-level-up" aria-hidden="true"></i>
                             <span class="counter text-info">
-                                <?php 
-                                $jumlah_arsip = mysqli_query($koneksi,"select * from arsip");
+                                <?php
+                                $jumlah_arsip = mysqli_query($koneksi, "select * from arsip");
                                 ?>
                                 <span class="counter"><?php echo mysqli_num_rows($jumlah_arsip); ?></span>
                             </span>
@@ -92,10 +92,10 @@
                             <div id="sparklinedash4"></div>
                         </li>
                         <li class="text-right graph-four-ctn">
-                            <i class="fa fa-level-down" aria-hidden="true"></i> 
+                            <i class="fa fa-level-down" aria-hidden="true"></i>
                             <span class="text-danger">
-                                <?php 
-                                $jumlah_kategori = mysqli_query($koneksi,"select * from kategori");
+                                <?php
+                                $jumlah_kategori = mysqli_query($koneksi, "select * from kategori");
                                 ?>
                                 <span class="counter"><?php echo mysqli_num_rows($jumlah_kategori); ?></span>
                             </span>
@@ -142,9 +142,9 @@
 
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 
-                <?php 
-                $id = $_SESSION['id'];
-                $saya = mysqli_query($koneksi,"select * from petugas where petugas_id='$id'");
+                <?php
+                $petugas_id = $_SESSION['id'];
+                $saya = mysqli_query($koneksi, "select * from petugas where petugas_id='$petugas_id'");
                 $s = mysqli_fetch_assoc($saya);
                 ?>
                 <div class="single-cards-item">
@@ -155,15 +155,15 @@
                     </div>
 
                     <div class="single-product-text">
-                        <?php 
-                        if($s['petugas_foto'] == ""){
-                            ?>
+                        <?php
+                        if ($s['petugas_foto'] == "") {
+                        ?>
                             <img class="img-user" src="../gambar/sistem/user.png">
-                            <?php
-                        }else{
-                            ?>
+                        <?php
+                        } else {
+                        ?>
                             <img class="img-user" src="../gambar/petugas/<?php echo $s['petugas_foto']; ?>">
-                            <?php
+                        <?php
                         }
                         ?>
 
