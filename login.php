@@ -79,7 +79,7 @@
                                 <select class="form-control" name="akses">
                                     <option value="admin">Admin</option>
                                     <option value="petugas">Petugas</option>
-                                    <option value="user">User</option>
+                                    <option value="user">Guru</option>
                                 </select>
 
                             </div>

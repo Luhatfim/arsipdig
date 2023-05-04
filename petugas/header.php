@@ -92,7 +92,7 @@
                         <li>
                             <a href="user.php" aria-expanded="false">
                                 <span class="fas fa-user icon-wrap sub-icon-mg" aria-hidden="true"></span>
-                                <span class="mini-click-non" style="padding-left: 7px;">Data User</span>
+                                <span class="mini-click-non" style="padding-left: 7px;">Data Guru</span>
                             </a>
                         </li>
 
@@ -254,7 +254,7 @@
                                         <li>
                                             <a href="user.php" aria-expanded="false">
                                                 <span class="fas fa-user icon-wrap sub-icon-mg" aria-hidden="true"></span>
-                                                <span class="mini-click-non">Data User</span>
+                                                <span class="mini-click-non">Data Guru</span>
                                             </a>
                                         </li>
 

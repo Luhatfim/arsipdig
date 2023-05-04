@@ -51,6 +51,11 @@
                         </div>
 
                         <div class="form-group">
+                            <label>Kode</label>
+                            <input type="text" class="form-control" name="kode" required="required">
+                        </div>
+
+                        <div class="form-group">
                             <label>Keterangan</label>
                             <textarea class="form-control" name="keterangan" required="required"></textarea>
                         </div>

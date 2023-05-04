@@ -37,6 +37,7 @@
                     <tr>
                         <th width="1%">No</th>
                         <th>Nama</th>
+                        <th>Kode</th>
                         <th>Katerangan</th>
                     </tr>
                 </thead>
@@ -49,6 +50,7 @@
                         <tr>
                             <td><?php echo $no++; ?></td>
                             <td><?php echo $p['kategori_nama'] ?></td>
+                            <td><?php echo $p['kategori_kode'] ?></td>
                             <td><?php echo $p['kategori_keterangan'] ?></td>
                         </tr>
                         <?php 

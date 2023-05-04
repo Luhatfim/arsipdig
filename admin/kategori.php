@@ -45,7 +45,8 @@
                     <tr>
                         <th width="1%">No</th>
                         <th>Nama</th>
-                        <th>Katerangan</th>
+                        <th>Kode</th>
+                        <th>Keterangan</th>
                         <th class="text-center" width="10%">OPSI</th>
                     </tr>
                 </thead>
@@ -59,6 +60,7 @@
                         <tr>
                             <td><?php echo $no++; ?></td>
                             <td><?php echo $p['kategori_nama'] ?></td>
+                            <td><?php echo $p['kategori_kode'] ?></td>
                             <td><?php echo $p['kategori_keterangan'] ?></td>
                             <td class="text-center">
                                 <?php 

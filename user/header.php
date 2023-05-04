@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>User - Sistem Informasi Arsip Digital</title>
+    <title>Guru - Sistem Informasi Arsip Digital</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
@@ -75,12 +75,19 @@
                         </li>
 
                         <li>
+                            <a href="kategori.php" aria-expanded="false">
+                                <span class="fas fa-list-alt icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                                <span class="mini-click-non" style="padding-left: 4px;">Data Kategori</span>
+                            </a>
+                        </li>
+                        
+                        <li>
                             <a href="arsip.php" aria-expanded="false">
                                 <span class="fas fa-archive icon-wrap sub-icon-mg" aria-hidden="true"></span>
                                 <span class="mini-click-non" style="padding-left: 4px;">Data Arsip</span>
                             </a>
                         </li>
-
+                        
                         <li>
                             <a href="gantipassword.php" aria-expanded="false">
                                 <span class="fas fa-user-cog icon-wrap sub-icon-mg" aria-hidden="true"></span>
@@ -171,7 +178,7 @@
                                                         <?php
                                                         }
                                                         ?>
-                                                        <span class="admin-name"><?php echo $_SESSION['nama']; ?> [ <b>User</b> ]</span>
+                                                        <span class="admin-name"><?php echo $_SESSION['nama']; ?> [ <b>Guru</b> ]</span>
                                                         <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
                                                     </a>
                                                     <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">

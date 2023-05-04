@@ -57,6 +57,12 @@
                             </div>
 
                             <div class="form-group">
+                                <label>Kode</label>
+                                <input type="hidden" name="id" value="<?php echo $d['kategori_id']; ?>">
+                                <input type="text" class="form-control" name="kode" required="required" value="<?php echo $d['kategori_kode']; ?>">
+                            </div>
+
+                            <div class="form-group">
                                 <label>Katerangan</label>
                                 <textarea class="form-control" name="keterangan" required="required"><?php echo $d['kategori_keterangan']; ?></textarea>
                             </div>

@@ -48,7 +48,7 @@
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                 <div class="white-box analytics-info-cs res-mg-t-30 table-mg-t-pro-n">
-                    <h3 class="box-title">User / Pengguna</h3>
+                    <h3 class="box-title">User / Guru</h3>
                     <ul class="list-inline two-part-sp">
                         <li>
                             <div id="sparklinedash2"></div>
