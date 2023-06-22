@@ -57,7 +57,7 @@
 
                         <div class="form-group">
                             <label>Nomor Surat</label>
-                            <input type="text" class="form-control" name="nomor" required="required">
+                            <input type="text" class="form-control" name="nomor">
                         </div>
 
                         <div class="form-group">
