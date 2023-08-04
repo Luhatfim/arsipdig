@@ -85,7 +85,7 @@
                                 <option value="all">Pilih Semua</option>
                                 <optgroup label="Petugas">
                                     <?php
-                                    $petugas = mysqli_query($koneksi, "SELECT * FROM petugas WHERE petugas_id != $id_petugas");
+                                    $petugas = mysqli_query($koneksi, "SELECT * FROM petugas WHERE petugas_id != $id_user");
                                     foreach ($petugas as $dta) {
                                     ?>
                                         <option value="1-<?= $dta['petugas_id'] ?>"><?= $dta['petugas_nama'] ?></option>
