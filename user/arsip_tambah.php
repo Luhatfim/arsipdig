@@ -44,25 +44,9 @@
                     <br>
 
                     <form method="post" action="arsip_aksi.php" enctype="multipart/form-data">
-
-                        <div class="form-group">
-                            <label>Kode Arsip</label>
-                            <input type="text" class="form-control" name="kode" required="required">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Nama Arsip</label>
-                            <input type="text" class="form-control" name="nama" required="required">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Nomor Surat</label>
-                            <input type="text" class="form-control" name="nomor" required="required">
-                        </div>
-
                         <div class="form-group">
                             <label>Kategori</label>
-                            <select class="form-control" name="kategori" required="required">
+                            <select class="form-control kategori-select" name="kategori" required="required">
                                 <option value="">Pilih kategori</option>
                                 <?php
                                 $kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
@@ -76,6 +60,21 @@
                         </div>
 
                         <div class="form-group">
+                            <label>Kode Arsip</label>
+                            <input type="text" class="form-control kode-arsip" name="kode" required="required" readonly placeholder="KA-000">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nama Arsip</label>
+                            <input type="text" class="form-control" name="nama" required="required">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nomor Surat</label>
+                            <input type="text" class="form-control" name="nomor">
+                        </div>
+
+                        <div class="form-group">
                             <label>Keterangan</label>
                             <textarea class="form-control" name="keterangan" required="required"></textarea>
                         </div>
@@ -86,7 +85,7 @@
                                 <option value="all">Pilih Semua</option>
                                 <optgroup label="Petugas">
                                     <?php
-                                    $petugas = mysqli_query($koneksi, "SELECT * FROM petugas");
+                                    $petugas = mysqli_query($koneksi, "SELECT * FROM petugas WHERE petugas_id != $id_petugas");
                                     foreach ($petugas as $dta) {
                                     ?>
                                         <option value="1-<?= $dta['petugas_id'] ?>"><?= $dta['petugas_nama'] ?></option>
@@ -94,7 +93,7 @@
                                 </optgroup>
                                 <optgroup label="Guru/Staf">
                                     <?php
-                                    $user = mysqli_query($koneksi, "SELECT * FROM user WHERE user_id != $id_user");
+                                    $user = mysqli_query($koneksi, "SELECT * FROM user");
                                     foreach ($user as $dta) {
                                     ?>
                                         <option value="2-<?= $dta['user_id'] ?>"><?= $dta['user_nama'] ?></option>
@@ -123,6 +122,7 @@
 
 </div>
 
+
 <?php include 'footer.php'; ?>
 
 <script>
@@ -149,6 +149,23 @@
             if (value == null) {
                 $('.select2').prepend('<option value="all" hidden>Pilih Semua</option>');
             }
+        });
+
+        $('.kategori-select').change(function(e) {
+            e.preventDefault();
+
+            var kategori_id = $(this).val();
+
+            $.ajax({
+                url: 'controller.php',
+                method: 'POST',
+                data: {
+                    kategori_id
+                },
+                success: function(data) {
+                    $('.kode-arsip').val(data);
+                },
+            });
         });
     });
 </script>

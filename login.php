@@ -77,7 +77,7 @@
                             <div class="form-group">
                                 <label class="control-label" for="password">Hak Akses</label>
                                 <select class="form-control" name="akses">
-                                    <option value="admin">Admin</option>
+                                    <!-- <option value="admin">Admin</option> -->
                                     <option value="petugas">Petugas</option>
                                     <option value="user">Guru</option>
                                 </select>

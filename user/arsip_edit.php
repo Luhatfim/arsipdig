@@ -55,7 +55,7 @@
                             <div class="form-group">
                                 <label>Kode Arsip</label>
                                 <input type="hidden" name="id" value="<?php echo $d['arsip_id']; ?>">
-                                <input type="text" class="form-control" name="kode" required="required" value="<?php echo $d['arsip_kode']; ?>">
+                                <input type="text" class="form-control" name="kode" required="required" readonly="" value="<?php echo $d['arsip_kode']; ?>">
                             </div>
 
                             <div class="form-group">

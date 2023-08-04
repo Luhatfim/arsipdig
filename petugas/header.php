@@ -97,6 +97,13 @@
                         </li>
 
                         <li>
+                            <a href="laporan.php" aria-expanded="false">
+                                <span class="fas fa-file-alt icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                                <span class="mini-click-non" style="padding-left: 8px;">Laporan</span>
+                            </a>
+                        </li>
+
+                        <li>
                             <a href="riwayat.php" aria-expanded="false">
                                 <span class="fas fa-file-download icon-wrap sub-icon-mg" aria-hidden="true"></span>
                                 <span class="mini-click-non" style="padding-left: 8px;">Riwayat Unduh</span>
