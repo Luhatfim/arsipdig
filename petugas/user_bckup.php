@@ -1,5 +1,6 @@
 <?php include 'header.php'; ?>
 
+
 <div class="breadcome-area">
     <div class="container-fluid">
         <div class="row">
@@ -8,13 +9,13 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="breadcome-heading">
-                                <h4 style="margin-bottom: 0px">Data Kategori</h4>
+                                <h4 style="margin-bottom: 0px">Data Guru</h4>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu" style="padding-top: 0px">
                                 <li><a href="#">Home</a> <span class="bread-slash">/</span></li>
-                                <li><span class="bread-blod">Kategori</span></li>
+                                <li><span class="bread-blod">Guru</span></li>
                             </ul>
                         </div>
                     </div>
@@ -28,52 +29,44 @@
     <div class="panel panel">
 
         <div class="panel-heading">
-            <h3 class="panel-title">Data kategori</h3>
+            <h3 class="panel-title">Data Guru</h3>
         </div>
         <div class="panel-body">
 
-
-            <div class="pull-right">
-                <a href="kategori_tambah.php" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah kategori</a>
-            </div>
-
-            <br>
-            <br>
-            <br>
+        
             <table id="table" class="table table-bordered table-striped table-hover table-datatable">
                 <thead>
                     <tr>
                         <th width="1%">No</th>
+                        <th width="5%">Foto</th>
                         <th>Nama</th>
-                        <th>Kode</th>
-                        <th>Keterangan</th>
-                        <th class="text-center" width="10%">OPSI</th>
+                        <th>Username</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php 
                     include '../koneksi.php';
                     $no = 1;
-                    $kategori = mysqli_query($koneksi,"SELECT * FROM kategori");
-                    while($p = mysqli_fetch_array($kategori)){
+                    $user = mysqli_query($koneksi,"SELECT * FROM user ORDER BY user_id DESC");
+                    while($p = mysqli_fetch_array($user)){
                         ?>
                         <tr>
                             <td><?php echo $no++; ?></td>
-                            <td><?php echo $p['kategori_nama'] ?></td>
-                            <td><?php echo $p['kategori_kode'] ?></td>
-                            <td><?php echo $p['kategori_keterangan'] ?></td>
-                            <td class="text-center">
+                            <td>
                                 <?php 
-                                if($p['kategori_id'] != 1){
+                                if($p['user_foto'] == ""){
                                     ?>
-                                    <div class="btn-group">
-                                        <a href="kategori_edit.php?id=<?php echo $p['kategori_id']; ?>" class="btn btn-default"><i class="fa fa-wrench"></i></a>
-                                        <a href="kategori_hapus.php?id=<?php echo $p['kategori_id']; ?>" class="btn btn-default"><i class="fa fa-trash"></i></a>
-                                    </div>
+                                    <img class="img-user" src="../gambar/sistem/user.png">
+                                    <?php
+                                }else{
+                                    ?>
+                                    <img class="img-user" src="../gambar/user/<?php echo $p['user_foto']; ?>">
                                     <?php
                                 }
                                 ?>
                             </td>
+                            <td><?php echo $p['user_nama'] ?></td>
+                            <td><?php echo $p['user_username'] ?></td>  
                         </tr>
                         <?php 
                     }

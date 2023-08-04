@@ -1,6 +1,5 @@
 <?php include 'header.php'; ?>
 
-
 <div class="breadcome-area">
     <div class="container-fluid">
         <div class="row">
@@ -33,7 +32,13 @@
         </div>
         <div class="panel-body">
 
-        
+            <div class="pull-right">
+                <a href="user_tambah.php" class="btn btn-primary"><i class="fa fa-plus"></i>Tambah Guru</a>
+            </div>
+            <br>
+            <br>
+            <br>
+
             <table id="table" class="table table-bordered table-striped table-hover table-datatable">
                 <thead>
                     <tr>
@@ -41,6 +46,7 @@
                         <th width="5%">Foto</th>
                         <th>Nama</th>
                         <th>Username</th>
+                        <th class="text-center" width="10%">OPSI</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -66,7 +72,13 @@
                                 ?>
                             </td>
                             <td><?php echo $p['user_nama'] ?></td>
-                            <td><?php echo $p['user_username'] ?></td>  
+                            <td><?php echo $p['user_username'] ?></td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <a href="user_edit.php?id=<?php echo $p['user_id']; ?>" class="btn btn-default"><i class="fa fa-wrench"></i></a>
+                                    <a href="user_hapus.php?id=<?php echo $p['user_id']; ?>" class="btn btn-default"><i class="fa fa-trash"></i></a>
+                                </div>
+                            </td>
                         </tr>
                         <?php 
                     }
